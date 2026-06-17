@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --lime: #d9f80f;
+  --lime-footer: #e6ef5f;
+  --near-black: #161616;
+  --dark-alt: #1e1e1e;
+  --orange: #b15202;
+  --orange-dark: #a64c02;
+  --brown: #5b300c;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-lime: #d9f80f;
+  --color-lime-footer: #e6ef5f;
+  --color-near-black: #161616;
+  --color-dark-alt: #1e1e1e;
+  --color-orange: #b15202;
+  --color-page-bg: #0d0d0d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0d0d0d;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  cursor: none;
+}
+
+@keyframes letterUp {
+  from { opacity: 0; transform: translateY(48px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dotPop {
+  from { opacity: 0; transform: scale(0.2); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.font-segoe {
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.font-roboto {
+  font-family: var(--font-roboto), Roboto, sans-serif;
 }
