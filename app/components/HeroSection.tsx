@@ -1,5 +1,5 @@
-// Hero background: place your tennis court image at public/hero-court.jpg
-// Figma source: https://www.figma.com/api/mcp/asset/2d678201-1c38-42ae-8b17-ec28380d4742
+import Navbar from "./Navbar";
+
 const HERO_IMAGE = "/hero-court.jpg";
 
 export default function HeroSection() {
@@ -8,6 +8,7 @@ export default function HeroSection() {
       id="hero"
       className="relative rounded-[47px] overflow-hidden min-h-screen flex items-center justify-center"
     >
+      <Navbar />
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

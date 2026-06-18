@@ -64,3 +64,22 @@ body {
 .font-roboto {
   font-family: var(--font-roboto), Roboto, sans-serif;
 }
+
+/* ── Scroll reveal ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="fade"] { transform: translateY(0); }
+[data-reveal="scale"] { transform: scale(0.94) translateY(24px); }
+[data-reveal].revealed { opacity: 1; transform: none; }
+[data-delay="1"] { transition-delay: 0.10s; }
+[data-delay="2"] { transition-delay: 0.22s; }
+[data-delay="3"] { transition-delay: 0.34s; }
+[data-delay="4"] { transition-delay: 0.46s; }
+[data-delay="5"] { transition-delay: 0.58s; }
+
+/* ── Input caret & pointer ── */
+input, textarea { caret-color: white; }

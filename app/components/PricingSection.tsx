@@ -1,8 +1,7 @@
 "use client";
 
 import { PricingCard, PricingCardProps } from "@/components/ui/animated-glassy-pricing";
-
-const BALL_IMAGE = "/ball-top.png";
+import Navbar from "./Navbar";
 
 const PLANS: PricingCardProps[] = [
   {
@@ -56,25 +55,22 @@ export default function PricingSection() {
       id="price"
       className="relative rounded-t-[40px] overflow-hidden dark"
       style={{
-        background:
-          "linear-gradient(to bottom, #a64c02 4%, #5b300c 14%, #161616 44%)",
+        background: "linear-gradient(to bottom, #a64c02 4%, #5b300c 14%, #161616 44%)",
         minHeight: "100vh",
       }}
     >
-      {/* Tennis ball decorative overlay */}
+      <Navbar />
       <img
-        src={BALL_IMAGE}
+        src="/tennis-ball.png"
         alt=""
         aria-hidden="true"
-        className="absolute bottom-0 pointer-events-none select-none"
-        style={{ width: "62%", right: 0 }}
+        className="absolute bottom-0 -right-6 pointer-events-none select-none opacity-90"
+        style={{ width: "20%", transform: "rotate(20deg)" }}
       />
 
-      {/* Nav clearance */}
       <div className="h-28" />
 
-      {/* Heading */}
-      <div className="relative z-10 text-center px-10 mb-16">
+      <div data-reveal="fade" className="relative z-10 text-center px-10 mb-16">
         <h2
           className="font-normal text-white capitalize font-roboto"
           style={{ fontSize: "64px", lineHeight: 1.2 }}
@@ -83,10 +79,11 @@ export default function PricingSection() {
         </h2>
       </div>
 
-      {/* Glassy pricing cards */}
       <div className="relative z-10 flex flex-row gap-6 px-14 pb-16 items-center justify-center">
-        {PLANS.map((plan) => (
-          <PricingCard key={plan.planName} {...plan} />
+        {PLANS.map((plan, i) => (
+          <div key={plan.planName} data-reveal="scale" data-delay={String(i + 1)}>
+            <PricingCard {...plan} />
+          </div>
         ))}
       </div>
     </section>
