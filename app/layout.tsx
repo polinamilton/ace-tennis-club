@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import CustomCursor from "./components/CustomCursor";
 
@@ -26,6 +27,15 @@ export default function RootLayout({
       <body>
         <CustomCursor />
         {children}
+        <Script id="viewport-zoom" strategy="afterInteractive">{`
+          (function(){
+            function applyZoom(){
+              document.documentElement.style.zoom = Math.min(1, window.innerWidth / 1440);
+            }
+            applyZoom();
+            window.addEventListener('resize', applyZoom);
+          })();
+        `}</Script>
       </body>
     </html>
   );

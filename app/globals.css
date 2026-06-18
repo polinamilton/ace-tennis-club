@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
+  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.985 0 0);
+  --button-ripple-color: oklch(0.145 0 0 / 0.3);
   --lime: #d9f80f;
   --lime-footer: #e6ef5f;
   --near-black: #161616;
@@ -11,6 +16,8 @@
 }
 
 @theme inline {
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
   --color-lime: #d9f80f;
   --color-lime-footer: #e6ef5f;
   --color-near-black: #161616;
@@ -21,12 +28,14 @@
 
 html {
   scroll-behavior: smooth;
+  min-width: 1440px;
 }
 
 body {
   background: #0d0d0d;
   margin: 0;
   -webkit-font-smoothing: antialiased;
+  overflow-x: auto;
 }
 
 * {

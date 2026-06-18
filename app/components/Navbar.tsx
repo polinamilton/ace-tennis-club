@@ -45,7 +45,7 @@ export default function Navbar() {
         </div>
 
         {/* Nav links */}
-        <div className={`flex gap-10 text-[22px] font-segoe ${textColor}`}>
+        <div className={`flex gap-10 text-[16px] font-segoe ${textColor}`}>
           {NAV_LINKS.map(({ label, href }) => (
             <a
               key={label}
@@ -60,7 +60,7 @@ export default function Navbar() {
         {/* CTA */}
         <a
           href="#contact"
-          className="bg-[#d9f80f] text-black font-segoe text-[22px] px-7 py-2.5 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] hover:brightness-95 transition-all"
+          className="bg-[#d9f80f] text-black font-segoe text-[16px] px-6 py-2 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] hover:brightness-95 transition-all"
         >
           Book a Court
         </a>

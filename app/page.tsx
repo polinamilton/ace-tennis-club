@@ -13,8 +13,11 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <CourtsSection />
-        <PricingSection />
-        <ContactSection />
+        {/* Pricing + Contact share one split ball — no gap between them */}
+        <div className="flex flex-col">
+          <PricingSection />
+          <ContactSection />
+        </div>
       </div>
     </main>
   );

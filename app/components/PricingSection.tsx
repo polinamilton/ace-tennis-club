@@ -1,35 +1,52 @@
-// Tennis ball overlay: place your tennis ball image at public/tennis-ball.png
-// Figma source: https://www.figma.com/api/mcp/asset/e630a640-9de7-43c4-9eab-ea58fb1044cc
-const BALL_IMAGE = "/tennis-ball.png";
+"use client";
 
-const PLANS = [
+import { PricingCard, PricingCardProps } from "@/components/ui/animated-glassy-pricing";
+
+const BALL_IMAGE = "/ball-top.png";
+
+const PLANS: PricingCardProps[] = [
   {
-    name: "Basic Plan",
-    price: "$25.99",
-    cardBg: "bg-[rgba(255,255,255,0.55)]",
-    btnBg: "bg-[#1e1e1e]",
-    btnText: "text-white",
-    nameColor: "text-black",
-    priceColor: "text-black",
+    planName: "Basic",
+    description: "Get on the court and start playing.",
+    price: "25.99",
+    features: [
+      "2 court sessions per week",
+      "Group coaching classes",
+      "Locker room access",
+      "Member newsletter",
+    ],
+    buttonText: "Select Plan",
+    buttonVariant: "secondary",
   },
   {
-    name: "Standard Plan",
-    price: "$55.99",
-    cardBg: "bg-[rgba(0,0,0,0.57)]",
-    btnBg: "bg-[#d9f80f]",
-    btnText: "text-black",
-    nameColor: "text-white",
-    priceColor: "text-white",
-    highlighted: true,
+    planName: "Standard",
+    description: "Train harder and play more.",
+    price: "55.99",
+    features: [
+      "Unlimited court sessions",
+      "Weekly 1-on-1 coaching",
+      "Equipment storage",
+      "2 guest passes per month",
+      "Priority court booking",
+    ],
+    buttonText: "Select Plan",
+    isPopular: true,
+    buttonVariant: "primary",
   },
   {
-    name: "Premium Plan",
-    price: "$99.99",
-    cardBg: "bg-[rgba(255,255,255,0.55)]",
-    btnBg: "bg-[#1e1e1e]",
-    btnText: "text-white",
-    nameColor: "text-black",
-    priceColor: "text-black",
+    planName: "Premium",
+    description: "The full elite experience.",
+    price: "99.99",
+    features: [
+      "Unlimited court sessions",
+      "Daily coaching sessions",
+      "Full equipment included",
+      "VIP lounge access",
+      "Unlimited guest passes",
+      "Tournament entries included",
+    ],
+    buttonText: "Select Plan",
+    buttonVariant: "secondary",
   },
 ];
 
@@ -37,7 +54,7 @@ export default function PricingSection() {
   return (
     <section
       id="price"
-      className="relative rounded-[40px] overflow-hidden"
+      className="relative rounded-t-[40px] overflow-hidden dark"
       style={{
         background:
           "linear-gradient(to bottom, #a64c02 4%, #5b300c 14%, #161616 44%)",
@@ -49,15 +66,15 @@ export default function PricingSection() {
         src={BALL_IMAGE}
         alt=""
         aria-hidden="true"
-        className="absolute right-0 top-0 w-[55%] opacity-90 pointer-events-none select-none"
-        style={{ mixBlendMode: "screen" }}
+        className="absolute bottom-0 pointer-events-none select-none"
+        style={{ width: "62%", right: 0 }}
       />
 
       {/* Nav clearance */}
       <div className="h-28" />
 
       {/* Heading */}
-      <div className="relative z-10 text-center px-10 mb-10">
+      <div className="relative z-10 text-center px-10 mb-16">
         <h2
           className="font-normal text-white capitalize font-roboto"
           style={{ fontSize: "64px", lineHeight: 1.2 }}
@@ -66,38 +83,10 @@ export default function PricingSection() {
         </h2>
       </div>
 
-      {/* Cards */}
-      <div className="relative z-10 grid grid-cols-3 gap-5 px-10 pb-10">
+      {/* Glassy pricing cards */}
+      <div className="relative z-10 flex flex-row gap-6 px-14 pb-16 items-center justify-center">
         {PLANS.map((plan) => (
-          <div
-            key={plan.name}
-            className={`${plan.cardBg} backdrop-blur-md rounded-[40px] p-10 flex flex-col gap-6`}
-          >
-            <div>
-              <p
-                className={`font-semibold font-segoe text-[32px] ${plan.nameColor}`}
-              >
-                {plan.name}
-              </p>
-              <p
-                className={`font-normal font-roboto ${plan.priceColor} mt-2`}
-                style={{ fontSize: "64px", lineHeight: 1 }}
-              >
-                {plan.price}
-              </p>
-            </div>
-
-            {/* Feature placeholder area */}
-            <div
-              className="flex-1 rounded-[24px] bg-white/20 min-h-[160px]"
-            />
-
-            <button
-              className={`w-full py-4 rounded-full font-segoe text-[28px] ${plan.btnBg} ${plan.btnText} shadow-[0px_4px_4px_rgba(0,0,0,0.25)] hover:brightness-95 transition-all`}
-            >
-              Select Plan
-            </button>
-          </div>
+          <PricingCard key={plan.planName} {...plan} />
         ))}
       </div>
     </section>

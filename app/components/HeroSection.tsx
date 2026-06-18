@@ -46,7 +46,7 @@ export default function HeroSection() {
               height: 22,
               top: 28,
               right: -32,
-              animation: "dotPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.48s both",
+              animation: "letterUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.39s both",
             }}
           />
         </div>
@@ -58,7 +58,7 @@ export default function HeroSection() {
         </p>
         <a
           href="#contact"
-          className="bg-[#d9f80f] text-black font-segoe text-[22px] px-7 py-2.5 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] hover:brightness-95 transition-all"
+          className="bg-[#d9f80f] text-black font-segoe text-[16px] px-6 py-2 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] hover:brightness-95 transition-all"
           style={{ animation: "fadeUp 0.6s ease-out 0.8s both" }}
         >
           Join Now

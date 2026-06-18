@@ -19,7 +19,8 @@ export default function CustomCursor() {
     const onMove = (e: MouseEvent) => {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        const zoom = parseFloat(document.documentElement.style.zoom) || 1;
+        cursor.style.transform = `translate(${e.clientX / zoom}px, ${e.clientY / zoom}px)`;
 
         const under = document.elementFromPoint(e.clientX, e.clientY);
         const isHovering = !!(under?.closest("a, button"));

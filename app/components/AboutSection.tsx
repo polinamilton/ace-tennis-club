@@ -1,30 +1,3 @@
-const CARDS = [
-  {
-    number: "1",
-    bg: "bg-[#161616]",
-    numColor: "text-[#d9f80f]",
-    textColor: "text-white",
-    title: "Expert Coaching",
-    desc: "Train with certified professionals who develop champions at every level of the game.",
-  },
-  {
-    number: "2",
-    bg: "bg-[#b15202]",
-    numColor: "text-white",
-    textColor: "text-white",
-    title: "Premium Facilities",
-    desc: "Clay and hard courts maintained to international tournament standards year-round.",
-  },
-  {
-    number: "3",
-    bg: "bg-[#d9f80f]",
-    numColor: "text-[#1e1e1e]",
-    textColor: "text-[#1e1e1e]",
-    title: "Elite Community",
-    desc: "Join a network of passionate players, from beginners to competitive athletes.",
-  },
-];
-
 const STATS = [
   { value: "1,800+", label: "Members" },
   { value: "32", label: "Courts" },
@@ -35,50 +8,77 @@ const STATS = [
 export default function AboutSection() {
   return (
     <section id="about" className="bg-white rounded-[40px] overflow-hidden">
-      {/* Nav clearance */}
       <div className="h-28" />
 
-      {/* Three cards */}
       <div className="grid grid-cols-3 gap-5 px-10">
-        {CARDS.map((card) => (
-          <div
-            key={card.number}
-            className={`${card.bg} rounded-[40px] p-10 flex flex-col justify-between`}
-            style={{ minHeight: "510px" }}
-          >
-            <span
-              className={`font-bold leading-none font-roboto ${card.numColor}`}
-              style={{ fontSize: "128px" }}
-            >
-              {card.number}
-            </span>
-            <div>
-              <h3
-                className={`font-semibold text-3xl mb-3 font-segoe ${card.textColor}`}
-              >
-                {card.title}
-              </h3>
-              <p
-                className={`text-lg leading-relaxed font-roboto ${card.textColor} opacity-80`}
-              >
-                {card.desc}
-              </p>
+
+        {/* Col 1: Coaching photo — tall portrait */}
+        <div className="relative rounded-[24px] overflow-hidden" style={{ height: "440px" }}>
+          <img
+            src="/about-coaching.jpg"
+            alt="Expert coaching"
+            className="w-full h-full object-cover object-top"
+          />
+          <div className="absolute top-5 left-5">
+            <span className="block font-bold text-[#d9f80f] font-roboto leading-none" style={{ fontSize: "48px" }}>01</span>
+            <span className="block font-segoe text-white font-semibold text-base leading-tight mt-1">Expert Coaching</span>
+          </div>
+        </div>
+
+        {/* Col 2: Community photo — tall portrait */}
+        <div className="relative rounded-[24px] overflow-hidden" style={{ height: "440px" }}>
+          <img
+            src="/about-community.jpg"
+            alt="Elite community"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-5 left-5">
+            <span className="block font-bold text-[#d9f80f] font-roboto leading-none" style={{ fontSize: "48px" }}>02</span>
+            <span className="block font-segoe text-white font-semibold text-base leading-tight mt-1">Elite Community</span>
+          </div>
+        </div>
+
+        {/* Col 3: Small court photo + 15 Years stat */}
+        <div className="flex flex-col gap-5" style={{ height: "440px" }}>
+          <div className="relative rounded-[24px] overflow-hidden flex-shrink-0" style={{ height: "200px" }}>
+            <img
+              src="/about-facilities.jpg"
+              alt="Premium facilities"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute top-4 left-4">
+              <span className="block font-bold text-[#d9f80f] font-roboto leading-none" style={{ fontSize: "48px" }}>03</span>
+              <span className="block font-segoe text-white font-semibold text-base leading-tight mt-1">Premium Facilities</span>
             </div>
           </div>
-        ))}
+          <div className="flex-1 flex items-center gap-3 pl-1">
+            <span
+              className="font-bold text-[#d9f80f] font-roboto leading-none flex-shrink-0"
+              style={{ fontSize: "148px" }}
+            >
+              15
+            </span>
+            <span className="font-segoe text-black text-[22px] leading-snug">
+              Years of<br />Experience
+            </span>
+          </div>
+        </div>
+
       </div>
 
+      <div className="h-6" />
+
       {/* Stats bar */}
-      <div className="bg-[#d9f80f] rounded-b-[40px] px-10 py-10 flex justify-around items-center mt-5">
+      <div className="bg-[#d9f80f] rounded-b-[40px] px-10 py-5 flex justify-around items-center">
         {STATS.map((stat) => (
           <div key={stat.label} className="text-center">
             <div
-              className="font-semibold text-white leading-none mb-2 font-roboto"
-              style={{ fontSize: "64px" }}
+              className="font-semibold text-white leading-none mb-1 font-roboto"
+              style={{ fontSize: "44px" }}
             >
               {stat.value}
             </div>
-            <div className="text-black font-semibold text-2xl font-segoe">
+            <div className="text-black font-semibold text-lg font-segoe">
               {stat.label}
             </div>
           </div>
