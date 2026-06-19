@@ -7,10 +7,12 @@ import { useSection } from "./SectionContext";
 export default function Navbar({
   light = false,
   showLang = false,
+  showBook = true,
   sectionId = "hero",
 }: {
   light?: boolean;
   showLang?: boolean;
+  showBook?: boolean;
   sectionId?: string;
 }) {
   const { t, locale, setLocale } = useLang();
@@ -97,12 +99,14 @@ export default function Navbar({
           </div>
         )}
 
-        <a
-          href="#contact"
-          className="bg-[#d9f80f] text-black font-segoe text-[15px] px-5 py-2 rounded-full hover:brightness-95 transition-all"
-        >
-          {t.nav.book}
-        </a>
+        {showBook && (
+          <a
+            href="#courts"
+            className="bg-[#d9f80f] text-black font-segoe text-[15px] px-5 py-2 rounded-full hover:brightness-95 transition-all"
+          >
+            {t.nav.book}
+          </a>
+        )}
       </div>
     </div>
   );

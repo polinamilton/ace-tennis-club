@@ -17,7 +17,7 @@ export default function CourtsSection() {
 
   return (
     <section id="courts" className="relative bg-white overflow-hidden">
-      <Navbar light sectionId="courts" />
+      <Navbar light sectionId="courts" showBook={false} />
       <div className="h-28" />
 
       <div className="flex items-end px-14 pb-14 gap-12">
@@ -64,17 +64,36 @@ export default function CourtsSection() {
             style={{ animation: "fadeUp 0.4s ease-out both" }}
           />
 
+          {/* Top gradient + court name */}
+          <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
+          <div key={`name-${current}`} className="absolute top-5 left-6 z-10" style={{ animation: "fadeUp 0.35s ease-out both" }}>
+            <span className="font-roboto font-bold text-white" style={{ fontSize: "26px", textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}>
+              {court.name}
+            </span>
+          </div>
+
+          {/* Bottom gradient + Book a Court button */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/65 to-transparent pointer-events-none" />
+          <div className="absolute bottom-14 left-0 right-0 flex justify-center z-10">
+            <a
+              href="#price"
+              className="bg-[#d9f80f] text-black font-segoe text-[14px] font-semibold px-6 py-2.5 rounded-full hover:brightness-95 transition-all"
+            >
+              {t.nav.book}
+            </a>
+          </div>
+
           <button onClick={prev} aria-label="Previous court"
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center hover:bg-black/50 transition-all text-white">
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center hover:bg-black/50 transition-all text-white z-10">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M15 18l-6-6 6-6" /></svg>
           </button>
 
           <button onClick={next} aria-label="Next court"
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center hover:bg-black/50 transition-all text-white">
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center hover:bg-black/50 transition-all text-white z-10">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M9 18l6-6-6-6" /></svg>
           </button>
 
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {courts.map((_, i) => (
               <button key={i} onClick={() => setCurrent(i)} aria-label={`Court ${i + 1}`}
                 className={`rounded-full transition-all ${i === current ? "bg-white w-4 h-4" : "bg-white/50 w-3 h-3 mt-0.5"}`} />

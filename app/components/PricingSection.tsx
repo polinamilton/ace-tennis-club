@@ -38,7 +38,7 @@ export default function PricingSection() {
 
       <div className="relative z-10 flex flex-row gap-6 px-14 pb-16 items-stretch justify-center">
         {t.pricing.plans.map((plan, i) => (
-          <div key={plan.name} data-reveal="scale" data-delay={String(i + 1)}>
+          <div key={plan.name} data-reveal="scale" data-delay={String(i + 1)} className="flex flex-col">
             <PricingCard
               planName={plan.name}
               description={plan.description}
