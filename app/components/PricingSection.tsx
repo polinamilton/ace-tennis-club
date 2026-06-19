@@ -43,7 +43,7 @@ export default function PricingSection() {
               planName={plan.name}
               description={plan.description}
               price={plan.price}
-              features={plan.features as string[]}
+              features={[...plan.features]}
               buttonText={t.pricing.selectPlan}
               isPopular={"isPopular" in plan ? plan.isPopular : false}
               buttonVariant={i === 1 ? "primary" : "secondary"}
