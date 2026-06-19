@@ -1,14 +1,19 @@
+"use client";
+
 import Navbar from "./Navbar";
+import { useLang } from "../i18n/LanguageContext";
 
 const HERO_IMAGE = "/hero-court.jpg";
 
 export default function HeroSection() {
+  const { t } = useLang();
+
   return (
     <section
       id="hero"
-      className="relative rounded-[47px] overflow-hidden min-h-screen flex items-center justify-center"
+      className="relative rounded-t-[40px] overflow-hidden min-h-screen flex items-center justify-center"
     >
-      <Navbar />
+      <Navbar padLeft="pl-20" />
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -55,14 +60,14 @@ export default function HeroSection() {
           className="font-segoe text-white/80 text-[22px] mt-4 mb-8 tracking-widest uppercase"
           style={{ animation: "fadeUp 0.6s ease-out 0.65s both" }}
         >
-          Where Champions Are Made
+          {t.hero.tagline}
         </p>
         <a
           href="#contact"
           className="bg-[#d9f80f] text-black font-segoe text-[16px] px-6 py-2 rounded-full shadow-[0px_4px_4px_rgba(0,0,0,0.25)] hover:brightness-95 transition-all"
           style={{ animation: "fadeUp 0.6s ease-out 0.8s both" }}
         >
-          Join Now
+          {t.hero.cta}
         </a>
       </div>
     </section>

@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Navbar from "./Navbar";
+import { useLang } from "../i18n/LanguageContext";
 
-const NAV_LINKS = ["About", "Courts", "Price", "Contact"];
 const CONTACT_LINKS = ["info@acetennis.com", "+1 (555) 000-0000", "123 Court Ave"];
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
+  const { t } = useLang();
+  const c = t.contact;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,9 +46,9 @@ export default function ContactSection() {
         {/* Left: JOIN THE GAME */}
         <div data-reveal className="flex-shrink-0" style={{ width: "320px" }}>
           <h2 className="font-bold font-roboto leading-[0.88]" style={{ fontSize: "86px" }}>
-            <span className="text-white">JOIN</span><br />
-            <span className="text-white/25">THE</span><br />
-            <span className="text-white/25">GAME</span>
+            <span className="text-white">{c.line1}</span><br />
+            <span className="text-white/25">{c.line2}</span><br />
+            <span className="text-white/25">{c.line3}</span>
           </h2>
         </div>
 
@@ -63,7 +65,7 @@ export default function ContactSection() {
             <div className="border-b border-white/25 pb-3 transition-colors focus-within:border-white/60">
               <input
                 type="text"
-                placeholder="Your name"
+                placeholder={c.namePlaceholder}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full bg-transparent text-white font-segoe text-xl placeholder:text-white/40 focus:outline-none"
@@ -72,7 +74,7 @@ export default function ContactSection() {
             <div className="border-b border-white/25 pb-3 transition-colors focus-within:border-white/60">
               <input
                 type="tel"
-                placeholder="Your Number"
+                placeholder={c.phonePlaceholder}
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 className="w-full bg-transparent text-white font-segoe text-xl placeholder:text-white/40 focus:outline-none"
@@ -81,7 +83,7 @@ export default function ContactSection() {
             <div className="border-b border-white/25 pb-3 transition-colors focus-within:border-white/60">
               <input
                 type="email"
-                placeholder="Your Email"
+                placeholder={c.emailPlaceholder}
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className="w-full bg-transparent text-white font-segoe text-xl placeholder:text-white/40 focus:outline-none"
@@ -92,7 +94,7 @@ export default function ContactSection() {
                 type="submit"
                 className="border border-white/35 text-white font-segoe font-medium text-lg px-10 py-4 hover:bg-white/10 transition-all"
               >
-                JOIN THE MEMBERSHIP
+                {c.submit}
               </button>
             </div>
           </form>
@@ -102,11 +104,11 @@ export default function ContactSection() {
       {/* Footer links */}
       <div className="absolute bottom-10 right-14 flex gap-16 z-10">
         <div>
-          <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-sm font-semibold mb-3">Navigation</p>
+          <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-sm font-semibold mb-3">{c.navLabel}</p>
           <ul className="flex flex-col gap-1.5">
-            {NAV_LINKS.map((link) => (
-              <li key={link}>
-                <a href={`#${link.toLowerCase()}`} className="text-white/45 font-segoe text-sm hover:text-white transition-colors">
+            {c.navLinks.map((link, i) => (
+              <li key={i}>
+                <a href={`#${["about","courts","price","contact"][i]}`} className="text-white/45 font-segoe text-sm hover:text-white transition-colors">
                   {link}
                 </a>
               </li>
@@ -114,7 +116,7 @@ export default function ContactSection() {
           </ul>
         </div>
         <div>
-          <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-sm font-semibold mb-3">Contacts</p>
+          <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-sm font-semibold mb-3">{c.contactsLabel}</p>
           <ul className="flex flex-col gap-1.5">
             {CONTACT_LINKS.map((item) => (
               <li key={item} className="text-white/45 font-segoe text-sm">{item}</li>

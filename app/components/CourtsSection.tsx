@@ -2,55 +2,21 @@
 
 import { useState } from "react";
 import Navbar from "./Navbar";
-
-const COURTS = [
-  {
-    src: "/court-1.jpg",
-    label: "Court Level",
-    name: "Grand Court",
-    surface: "Har-Tru Clay",
-    lighting: "Full floodlit",
-    size: "78 ft × 36 ft",
-    hours: "6:00 AM – 11:00 PM",
-  },
-  {
-    src: "/court-2.jpg",
-    label: "Aerial View",
-    name: "Centre Court",
-    surface: "Rebound Ace Hard",
-    lighting: "Stadium lights",
-    size: "78 ft × 36 ft",
-    hours: "6:00 AM – 11:00 PM",
-  },
-  {
-    src: "/court-3.jpg",
-    label: "Hard Court",
-    name: "Practice Court",
-    surface: "DecoTurf Hard",
-    lighting: "LED floodlit",
-    size: "78 ft × 27 ft",
-    hours: "7:00 AM – 10:00 PM",
-  },
-  {
-    src: "/court-4.jpg",
-    label: "Grass Court",
-    name: "Wimbledon Court",
-    surface: "Natural Grass",
-    lighting: "Natural only",
-    size: "78 ft × 36 ft",
-    hours: "8:00 AM – 8:00 PM",
-  },
-];
+import { useLang } from "../i18n/LanguageContext";
 
 export default function CourtsSection() {
   const [current, setCurrent] = useState(0);
-  const court = COURTS[current];
+  const { t } = useLang();
 
-  const prev = () => setCurrent((c) => (c - 1 + COURTS.length) % COURTS.length);
-  const next = () => setCurrent((c) => (c + 1) % COURTS.length);
+  const courts = t.courts.courts;
+  const court = courts[current];
+  const { labels } = t.courts;
+
+  const prev = () => setCurrent((c) => (c - 1 + courts.length) % courts.length);
+  const next = () => setCurrent((c) => (c + 1) % courts.length);
 
   return (
-    <section id="courts" className="relative bg-white rounded-[40px] overflow-hidden">
+    <section id="courts" className="relative bg-white overflow-hidden">
       <Navbar light />
       <div className="h-28" />
 
@@ -62,7 +28,7 @@ export default function CourtsSection() {
             className="font-bold leading-[0.9] font-roboto bg-gradient-to-r from-black from-50% via-black via-70% to-transparent bg-clip-text text-transparent whitespace-nowrap"
             style={{ fontSize: "88px" }}
           >
-            OUR<br />COURTS
+            {t.courts.heading1}<br />{t.courts.heading2}
           </h2>
 
           {/* Court details — animated on slide change */}
@@ -70,10 +36,10 @@ export default function CourtsSection() {
             <p className="font-roboto font-semibold text-black" style={{ fontSize: "22px" }}>{court.name}</p>
             <div className="flex flex-col">
               {[
-                { label: "Surface", value: court.surface },
-                { label: "Size",    value: court.size },
-                { label: "Lighting",value: court.lighting },
-                { label: "Hours",   value: court.hours },
+                { label: labels.surface, value: court.surface },
+                { label: labels.size,    value: court.size },
+                { label: labels.lighting, value: court.lighting },
+                { label: labels.hours,   value: court.hours },
               ].map(({ label, value }) => (
                 <div key={label} className="flex items-center justify-between py-3 border-b border-black/10 last:border-0">
                   <span className="font-segoe text-black/40 text-sm">{label}</span>
@@ -93,7 +59,7 @@ export default function CourtsSection() {
           <img
             key={current}
             src={court.src}
-            alt={court.label}
+            alt={court.imgLabel}
             className="w-full h-full object-cover"
             style={{ animation: "fadeUp 0.4s ease-out both" }}
           />
@@ -109,7 +75,7 @@ export default function CourtsSection() {
           </button>
 
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
-            {COURTS.map((_, i) => (
+            {courts.map((_, i) => (
               <button key={i} onClick={() => setCurrent(i)} aria-label={`Court ${i + 1}`}
                 className={`rounded-full transition-all ${i === current ? "bg-white w-4 h-4" : "bg-white/50 w-3 h-3 mt-0.5"}`} />
             ))}

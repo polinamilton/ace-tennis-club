@@ -83,3 +83,10 @@ body {
 
 /* ── Input caret & pointer ── */
 input, textarea { caret-color: white; }
+
+/* ── Section z-index (no overlap — sections flow flush) ── */
+#hero    { position: relative; z-index: 1; }
+#about   { position: relative; z-index: 2; }
+#courts  { position: relative; z-index: 3; }
+#price   { position: relative; z-index: 4; }
+#contact { position: relative; z-index: 5; }
