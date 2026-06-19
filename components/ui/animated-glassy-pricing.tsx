@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from 'react';
-import { RippleButton } from "@/components/ui/multi-type-ripple-buttons";
 
 const CheckIcon = ({ className }: { className?: string }) => (
   <svg
@@ -153,31 +152,33 @@ export interface PricingCardProps {
   features: string[];
   buttonText: string;
   isPopular?: boolean;
+  popularLabel?: string;
   buttonVariant?: 'primary' | 'secondary';
 }
 
 export const PricingCard = ({
-  planName, description, price, features, buttonText, isPopular = false, buttonVariant = 'primary'
+  planName, description, price, features, buttonText, isPopular = false, popularLabel = 'Most Popular', buttonVariant = 'primary'
 }: PricingCardProps) => {
   const cardClasses = `
-    backdrop-blur-[14px] bg-gradient-to-br rounded-2xl shadow-xl flex-1 max-w-xs px-7 py-8 flex flex-col transition-all duration-300
+    relative backdrop-blur-[14px] bg-gradient-to-br rounded-2xl shadow-xl w-72 px-7 py-8 flex flex-col
+    transition-all duration-300 ease-out hover:scale-105 hover:shadow-2xl
     from-black/5 to-black/0 border border-black/10
     dark:from-white/10 dark:to-white/5 dark:border-white/10 dark:backdrop-brightness-[0.91]
-    ${isPopular ? 'scale-105 relative ring-2 ring-cyan-400/20 dark:from-white/20 dark:to-white/10 dark:border-cyan-400/30 shadow-2xl' : ''}
+    ${isPopular ? 'ring-2 ring-[#d9f80f]/40 dark:from-white/20 dark:to-white/10 dark:border-[#d9f80f]/30' : ''}
   `;
   const buttonClasses = `
     mt-auto w-full py-2.5 rounded-xl font-semibold text-[14px] transition font-sans
     ${buttonVariant === 'primary'
-      ? 'bg-cyan-400 hover:bg-cyan-300 text-black'
-      : 'bg-black/10 hover:bg-black/20 text-foreground border border-black/20 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white dark:border-white/20'
+      ? 'bg-[#d9f80f] hover:brightness-95 text-black'
+      : 'bg-[#d9f80f] hover:brightness-95 text-black'
     }
   `;
 
   return (
     <div className={cardClasses.trim()}>
       {isPopular && (
-        <div className="absolute -top-4 right-4 px-3 py-1 text-[12px] font-semibold rounded-full bg-cyan-400 text-black">
-          Most Popular
+        <div className="absolute -top-4 right-4 px-3 py-1 text-[12px] font-semibold rounded-full bg-[#d9f80f] text-black">
+          {popularLabel}
         </div>
       )}
       <div className="mb-3">
@@ -192,11 +193,11 @@ export const PricingCard = ({
       <ul className="flex flex-col gap-2 text-[14px] text-white/80 mb-6 font-segoe">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center gap-2">
-            <CheckIcon className="text-cyan-400 w-4 h-4 flex-shrink-0" /> {feature}
+            <CheckIcon className="text-[#d9f80f] w-4 h-4 flex-shrink-0" /> {feature}
           </li>
         ))}
       </ul>
-      <RippleButton className={buttonClasses.trim()}>{buttonText}</RippleButton>
+      <button type="button" className={buttonClasses.trim()}>{buttonText}</button>
     </div>
   );
 };

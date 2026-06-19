@@ -17,16 +17,16 @@ export default function CourtsSection() {
 
   return (
     <section id="courts" className="relative bg-white overflow-hidden">
-      <Navbar light />
+      <Navbar light sectionId="courts" />
       <div className="h-28" />
 
       <div className="flex items-end px-14 pb-14 gap-12">
 
         {/* Left: title + court info */}
-        <div data-reveal className="flex-shrink-0 w-[380px] pb-2">
+        <div data-reveal className="flex-shrink-0 w-[460px] pb-2">
           <h2
-            className="font-bold leading-[0.9] font-roboto bg-gradient-to-r from-black from-50% via-black via-70% to-transparent bg-clip-text text-transparent whitespace-nowrap"
-            style={{ fontSize: "88px" }}
+            className="font-bold leading-[0.9] font-roboto bg-gradient-to-r from-black to-[#d9f80f] bg-clip-text text-transparent whitespace-nowrap"
+            style={{ fontSize: "112px" }}
           >
             {t.courts.heading1}<br />{t.courts.heading2}
           </h2>

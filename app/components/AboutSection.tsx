@@ -21,7 +21,7 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="relative bg-white overflow-hidden">
-      <Navbar light />
+      <Navbar light sectionId="about" />
       <div className="h-28" />
 
       <div className="grid grid-cols-3 gap-5 px-10">

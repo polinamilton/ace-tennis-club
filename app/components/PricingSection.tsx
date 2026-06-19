@@ -16,7 +16,7 @@ export default function PricingSection() {
         minHeight: "100vh",
       }}
     >
-      <Navbar />
+      <Navbar sectionId="price" />
       <img
         src="/tennis-ball.png"
         alt=""
@@ -36,7 +36,7 @@ export default function PricingSection() {
         </h2>
       </div>
 
-      <div className="relative z-10 flex flex-row gap-6 px-14 pb-16 items-center justify-center">
+      <div className="relative z-10 flex flex-row gap-6 px-14 pb-16 items-stretch justify-center">
         {t.pricing.plans.map((plan, i) => (
           <div key={plan.name} data-reveal="scale" data-delay={String(i + 1)}>
             <PricingCard
@@ -45,6 +45,7 @@ export default function PricingSection() {
               price={plan.price}
               features={[...plan.features]}
               buttonText={t.pricing.selectPlan}
+              popularLabel={t.pricing.popular}
               isPopular={"isPopular" in plan ? plan.isPopular : false}
               buttonVariant={i === 1 ? "primary" : "secondary"}
             />

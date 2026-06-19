@@ -21,7 +21,7 @@ export default function ContactSection() {
       className="relative rounded-b-[40px] overflow-hidden"
       style={{ background: "#161616", minHeight: "100vh" }}
     >
-      <Navbar />
+      <Navbar sectionId="contact" />
 
       <img
         src="/tennis-ball.png"
@@ -101,8 +101,8 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* Footer links */}
-      <div className="absolute bottom-10 right-14 flex gap-16 z-10">
+      {/* Footer links — centered */}
+      <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-24 z-10">
         <div>
           <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-sm font-semibold mb-3">{c.navLabel}</p>
           <ul className="flex flex-col gap-1.5">

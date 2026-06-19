@@ -13,7 +13,7 @@ export default function HeroSection() {
       id="hero"
       className="relative rounded-t-[40px] overflow-hidden min-h-screen flex items-center justify-center"
     >
-      <Navbar padLeft="pl-20" />
+      <Navbar showLang sectionId="hero" />
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

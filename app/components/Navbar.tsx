@@ -1,14 +1,37 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "../i18n/LanguageContext";
 import { useSection } from "./SectionContext";
 
-export default function Navbar({ light = false, padLeft = "pl-14" }: { light?: boolean; padLeft?: string }) {
+export default function Navbar({
+  light = false,
+  showLang = false,
+  sectionId = "hero",
+}: {
+  light?: boolean;
+  showLang?: boolean;
+  sectionId?: string;
+}) {
   const { t, locale, setLocale } = useLang();
   const { activeSection } = useSection();
+  const [visible, setVisible] = useState(sectionId === "hero");
+  const firstRender = useRef(true);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    if (activeSection === sectionId) {
+      setVisible(false);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setVisible(true));
+      });
+    }
+  }, [activeSection, sectionId]);
 
   const text = light ? "text-black" : "text-white";
-  const mutedClass = light ? "text-black/35" : "text-white/35";
 
   const NAV_LINKS = [
     { label: t.nav.about,   href: "#about",   id: "about" },
@@ -18,13 +41,22 @@ export default function Navbar({ light = false, padLeft = "pl-14" }: { light?: b
   ];
 
   return (
-    <div className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between ${padLeft} pr-14 pt-10`}>
+    <div
+      className="absolute top-0 left-0 right-0 z-20 flex items-center px-14 pt-10"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(-14px)",
+        transition: "opacity 0.45s ease, transform 0.45s ease",
+      }}
+    >
+      {/* Logo */}
       <div className={`flex items-center gap-2 font-bold text-[36px] leading-none font-roboto ${light ? "text-black" : "text-white"}`}>
         ACE
         <span className="w-3.5 h-3.5 rounded-full bg-[#d9f80f] inline-block" />
       </div>
 
-      <div className={`flex gap-10 text-[15px] font-segoe`}>
+      {/* Nav links — absolutely centered on page */}
+      <div className="absolute left-1/2 -translate-x-1/2 flex gap-10 text-[15px] font-segoe">
         {NAV_LINKS.map(({ label, href, id }) => {
           const isActive = activeSection === id;
           return (
@@ -32,9 +64,7 @@ export default function Navbar({ light = false, padLeft = "pl-14" }: { light?: b
               key={id}
               href={href}
               className={`transition-colors duration-300 ${
-                isActive
-                  ? "text-[#d9f80f]"
-                  : `${text} hover:text-[#d9f80f]`
+                isActive ? "text-[#d9f80f]" : `${text} hover:text-[#d9f80f]`
               }`}
             >
               {label}
@@ -43,29 +73,29 @@ export default function Navbar({ light = false, padLeft = "pl-14" }: { light?: b
         })}
       </div>
 
-      <div className="flex items-center gap-4">
-        {/* Language toggle pill */}
-        <div
-          className={`flex items-center rounded-full p-1 font-segoe text-[13px] font-medium ${
+      {/* Right controls */}
+      <div className="ml-auto flex items-center gap-4">
+        {showLang && (
+          <div className={`flex items-center rounded-full p-1 font-segoe text-[13px] font-medium ${
             light ? "bg-black/8 border border-black/12" : "bg-white/10 border border-white/15"
-          }`}
-        >
-          {(["en", "it"] as const).map((lang) => (
-            <button
-              key={lang}
-              onClick={() => setLocale(lang)}
-              className={`px-3 py-1 rounded-full transition-all duration-200 uppercase tracking-wide ${
-                locale === lang
-                  ? "bg-[#d9f80f] text-black"
-                  : light
-                  ? "text-black/45 hover:text-black/70"
-                  : "text-white/45 hover:text-white/70"
-              }`}
-            >
-              {lang}
-            </button>
-          ))}
-        </div>
+          }`}>
+            {(["en", "it"] as const).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => setLocale(lang)}
+                className={`px-3 py-1 rounded-full transition-all duration-200 uppercase tracking-wide ${
+                  locale === lang
+                    ? "bg-[#d9f80f] text-black"
+                    : light
+                    ? "text-black/45 hover:text-black/70"
+                    : "text-white/45 hover:text-white/70"
+                }`}
+              >
+                {lang}
+              </button>
+            ))}
+          </div>
+        )}
 
         <a
           href="#contact"
