@@ -290,6 +290,6 @@ export const translations = {
       navLinks: ["Chi Siamo", "Campi", "Prezzi", "Contatti"],
     },
   },
-} as const;
+};
 
 export type Translations = typeof translations["en"];
