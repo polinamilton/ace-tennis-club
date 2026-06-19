@@ -28,7 +28,7 @@ export default function ContactSection() {
         alt=""
         aria-hidden="true"
         className="absolute top-1/2 -right-20 pointer-events-none select-none opacity-85"
-        style={{ width: "38%", transform: "translateY(-50%) rotate(-15deg)" }}
+        style={{ width: "38%", transform: "translateY(-50%) rotate(-15deg)", animation: "ballFloat 9s ease-in-out infinite" }}
       />
 
       {/* Small accent ball — bottom-left corner */}
@@ -37,7 +37,7 @@ export default function ContactSection() {
         alt=""
         aria-hidden="true"
         className="absolute bottom-0 left-0 w-[32%] pointer-events-none select-none"
-        style={{ transform: "translate(-18%, 30%) rotate(140deg)" }}
+        style={{ transform: "translate(-18%, 30%) rotate(140deg)", animation: "ballDrift 13s ease-in-out infinite" }}
       />
 
       {/* Two-column: heading left, form center-right */}

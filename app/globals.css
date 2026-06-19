@@ -84,6 +84,18 @@ body {
 /* ── Input caret & pointer ── */
 input, textarea { caret-color: white; }
 
+/* ── Tennis ball slow-float animations ── */
+@keyframes ballFloat {
+  0%, 100% { transform: translateY(-50%) rotate(-15deg); }
+  50%       { transform: translateY(calc(-50% - 28px)) rotate(-8deg); }
+}
+
+@keyframes ballDrift {
+  0%, 100% { transform: translate(-18%, 30%) rotate(140deg); }
+  33%      { transform: translate(-13%, 23%) rotate(148deg); }
+  66%      { transform: translate(-22%, 25%) rotate(133deg); }
+}
+
 /* ── Section z-index (no overlap — sections flow flush) ── */
 #hero    { position: relative; z-index: 1; }
 #about   { position: relative; z-index: 2; }
