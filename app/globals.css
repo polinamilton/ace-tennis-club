@@ -87,13 +87,13 @@ input, textarea { caret-color: white; }
 /* ── Tennis ball slow-float animations ── */
 @keyframes ballFloat {
   0%, 100% { transform: translateY(-50%) rotate(-15deg); }
-  50%       { transform: translateY(calc(-50% - 28px)) rotate(-8deg); }
+  50%       { transform: translateY(calc(-50% - 60px)) rotate(-1deg); }
 }
 
 @keyframes ballDrift {
   0%, 100% { transform: translate(-18%, 30%) rotate(140deg); }
-  33%      { transform: translate(-13%, 23%) rotate(148deg); }
-  66%      { transform: translate(-22%, 25%) rotate(133deg); }
+  33%      { transform: translate(-7%, 17%) rotate(155deg); }
+  66%      { transform: translate(-27%, 19%) rotate(126deg); }
 }
 
 /* ── Section z-index (no overlap — sections flow flush) ── */

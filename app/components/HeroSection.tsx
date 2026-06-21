@@ -22,9 +22,6 @@ export default function HeroSection() {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/25" />
 
-      {/* Figma accent lines */}
-      <div className="absolute left-[58px] inset-y-0 w-px bg-white/30" />
-      <div className="absolute top-20 left-0 w-[215px] h-px bg-white/30" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center pt-24">
