@@ -111,7 +111,7 @@ input, textarea { caret-color: white; }
 
 
 /* ── Responsive heading sizes (mobile → desktop) ── */
-.hero-title       { font-size: 72px; }
+.hero-title       { font-size: 82px; }
 .courts-heading   { font-size: 52px; }
 .contact-heading  { font-size: 48px; }
 .about-years      { font-size: 72px; }

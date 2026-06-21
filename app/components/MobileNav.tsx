@@ -69,7 +69,14 @@ export default function MobileNav() {
       )}
 
       {/* Fixed top bar — mobile only */}
-      <div className="fixed top-0 left-0 right-0 z-[100] lg:hidden flex items-center px-5 pt-5 pb-3">
+      <div
+        className="fixed top-0 left-0 right-0 z-[100] lg:hidden flex items-center px-5 pt-5 pb-3 transition-all duration-300"
+        style={{
+          background: isLight ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.28)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+        }}
+      >
         {/* Logo */}
         <div className={`flex items-center gap-2 font-bold text-[28px] leading-none font-roboto transition-colors duration-300 ${textColor}`}>
           ACE
