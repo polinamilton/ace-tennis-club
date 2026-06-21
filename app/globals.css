@@ -106,6 +106,10 @@ input, textarea { caret-color: white; }
 /* ── Hero dot ── */
 .hero-dot { width: 12px; height: 12px; top: 10px; right: -16px; }
 
+/* ── Courts carousel aspect ratio ── */
+.courts-carousel { aspect-ratio: 4/5; }
+
+
 /* ── Responsive heading sizes (mobile → desktop) ── */
 .hero-title       { font-size: 72px; }
 .courts-heading   { font-size: 52px; }
@@ -116,6 +120,7 @@ input, textarea { caret-color: white; }
 
 @media (min-width: 1024px) {
   .hero-dot { width: 22px; height: 22px; top: 28px; right: -32px; }
+  .courts-carousel { aspect-ratio: 4/3; }
   .hero-title       { font-size: 196px; }
   .courts-heading   { font-size: 112px; }
   .contact-heading  { font-size: 86px; }

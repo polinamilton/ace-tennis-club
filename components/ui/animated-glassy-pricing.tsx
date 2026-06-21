@@ -154,13 +154,14 @@ export interface PricingCardProps {
   isPopular?: boolean;
   popularLabel?: string;
   buttonVariant?: 'primary' | 'secondary';
+  className?: string;
 }
 
 export const PricingCard = ({
-  planName, description, price, features, buttonText, isPopular = false, popularLabel = 'Most Popular', buttonVariant = 'primary'
+  planName, description, price, features, buttonText, isPopular = false, popularLabel = 'Most Popular', buttonVariant = 'primary', className = ''
 }: PricingCardProps) => {
   const cardClasses = `
-    relative backdrop-blur-[14px] bg-gradient-to-br rounded-2xl shadow-xl w-72 px-7 py-8 flex flex-col h-full
+    relative backdrop-blur-[14px] bg-gradient-to-br rounded-2xl shadow-xl ${className || 'w-72'} px-7 py-8 flex flex-col h-full
     transition-all duration-300 ease-out hover:scale-110 hover:shadow-2xl hover:z-10
     from-black/5 to-black/0 border border-black/10
     dark:from-white/10 dark:to-white/5 dark:border-white/10 dark:backdrop-brightness-[0.91]

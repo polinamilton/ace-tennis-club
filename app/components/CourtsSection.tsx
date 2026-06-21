@@ -31,8 +31,8 @@ export default function CourtsSection() {
           </h2>
 
           {/* Court details */}
-          <div key={current} className="mt-6 lg:mt-8 flex flex-col gap-4 lg:gap-5" style={{ animation: "fadeUp 0.35s ease-out both" }}>
-            <p className="font-roboto font-semibold text-black text-lg lg:text-[22px]">{court.name}</p>
+          <div key={current} className="mt-4 lg:mt-8 flex flex-col gap-2 lg:gap-5" style={{ animation: "fadeUp 0.35s ease-out both" }}>
+            <p className="font-roboto font-semibold text-black text-sm lg:text-[22px]">{court.name}</p>
             <div className="flex flex-col">
               {[
                 { label: labels.surface, value: court.surface },
@@ -40,9 +40,9 @@ export default function CourtsSection() {
                 { label: labels.lighting, value: court.lighting },
                 { label: labels.hours,   value: court.hours },
               ].map(({ label, value }) => (
-                <div key={label} className="flex items-center justify-between py-3 border-b border-black/10 last:border-0">
-                  <span className="font-segoe text-black/40 text-sm">{label}</span>
-                  <span className="font-segoe text-black text-sm font-medium">{value}</span>
+                <div key={label} className="flex items-center justify-between py-2 lg:py-3 border-b border-black/10 last:border-0">
+                  <span className="font-segoe text-black/40 text-[11px] lg:text-sm">{label}</span>
+                  <span className="font-segoe text-black text-[11px] lg:text-sm font-medium">{value}</span>
                 </div>
               ))}
             </div>
@@ -52,8 +52,7 @@ export default function CourtsSection() {
         {/* Right: large carousel */}
         <div
           data-reveal data-delay="2"
-          className="relative rounded-[32px] overflow-hidden bg-gray-200 w-full lg:flex-1"
-          style={{ aspectRatio: "4/3" }}
+          className="courts-carousel relative rounded-[32px] overflow-hidden bg-gray-200 w-full lg:flex-1"
         >
           <img
             key={current}

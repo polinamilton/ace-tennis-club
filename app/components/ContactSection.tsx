@@ -101,13 +101,13 @@ export default function ContactSection() {
       </div>
 
       {/* Footer links */}
-      <div className="relative z-10 flex justify-center gap-12 lg:gap-24 pb-10 px-6">
+      <div className="relative z-10 flex justify-center gap-8 lg:gap-24 pb-6 lg:pb-10 px-6">
         <div>
-          <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-sm font-semibold mb-3">{c.navLabel}</p>
-          <ul className="flex flex-col gap-1.5">
+          <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-[10px] lg:text-sm font-semibold mb-2 lg:mb-3">{c.navLabel}</p>
+          <ul className="flex flex-col gap-1">
             {c.navLinks.map((link, i) => (
               <li key={i}>
-                <a href={`#${["about","courts","price","contact"][i]}`} className="text-white/45 font-segoe text-sm hover:text-white transition-colors">
+                <a href={`#${["about","courts","price","contact"][i]}`} className="text-white/45 font-segoe text-[11px] lg:text-sm hover:text-white transition-colors">
                   {link}
                 </a>
               </li>
@@ -115,10 +115,10 @@ export default function ContactSection() {
           </ul>
         </div>
         <div>
-          <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-sm font-semibold mb-3">{c.contactsLabel}</p>
-          <ul className="flex flex-col gap-1.5">
+          <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-[10px] lg:text-sm font-semibold mb-2 lg:mb-3">{c.contactsLabel}</p>
+          <ul className="flex flex-col gap-1">
             {CONTACT_LINKS.map((item) => (
-              <li key={item} className="text-white/45 font-segoe text-sm">{item}</li>
+              <li key={item} className="text-white/45 font-segoe text-[11px] lg:text-sm">{item}</li>
             ))}
           </ul>
         </div>
