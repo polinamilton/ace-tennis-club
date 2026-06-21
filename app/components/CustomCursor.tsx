@@ -82,7 +82,7 @@ export default function CustomCursor() {
       document.documentElement.removeEventListener("mouseleave", onLeave);
       document.documentElement.removeEventListener("mouseenter", onEnter);
     };
-  }, []);
+  }, [hasMouse]);
 
   if (!hasMouse) return null;
 
