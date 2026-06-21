@@ -38,43 +38,24 @@ export default function HeroSection() {
         />
       </picture>
 
-      {/* Mobile overlay: heavy gradient top + bottom, clear window in middle */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 to-black/75 lg:hidden" />
+      {/* Mobile overlay: clear top to show photo, strong gradient only at bottom */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80 lg:hidden" />
       {/* Desktop overlay: flat */}
       <div className="absolute inset-0 bg-black/25 hidden lg:block" />
 
-      {/* ── Mobile layout: title top-left, CTA bottom-left ── */}
+      {/* ── Mobile layout: photo fills screen, tagline + CTA anchored to bottom ── */}
       <div className="relative z-10 flex flex-col min-h-screen px-6 lg:hidden">
-        {/* Top: brand title */}
-        <div className="pt-28">
-          <div className="relative inline-block">
-            <h1
-              className="hero-title text-white leading-none font-roboto"
-              style={{ fontWeight: 700, letterSpacing: "0.03em" }}
-            >
-              {letters}
-            </h1>
-            <span
-              className="absolute rounded-full bg-[#d9f80f] hero-dot"
-              style={{ animation: "letterUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.39s both" }}
-            />
-          </div>
-          <p
-            className="font-segoe text-white/65 text-[11px] tracking-[0.25em] uppercase mt-4"
-            style={{ animation: "fadeUp 0.6s ease-out 0.65s both" }}
-          >
+        {/* Bottom: tagline + CTA */}
+        <div
+          className="mt-auto pb-14 flex flex-col gap-4"
+          style={{ animation: "fadeUp 0.7s ease-out 0.4s both" }}
+        >
+          <p className="font-segoe text-white/60 text-[11px] tracking-[0.3em] uppercase">
             {t.hero.tagline}
           </p>
-        </div>
-
-        {/* Bottom: CTA */}
-        <div
-          className="mt-auto pb-14"
-          style={{ animation: "fadeUp 0.6s ease-out 0.8s both" }}
-        >
           <a
             href="#contact"
-            className="inline-block bg-[#d9f80f] text-black font-segoe text-[15px] font-semibold px-7 py-3 rounded-full shadow-[0px_4px_16px_rgba(0,0,0,0.35)] hover:brightness-95 transition-all"
+            className="inline-block bg-[#d9f80f] text-black font-segoe text-[15px] font-semibold px-7 py-3 rounded-full shadow-[0px_4px_16px_rgba(0,0,0,0.35)] hover:brightness-95 transition-all self-start"
           >
             {t.hero.cta}
           </a>

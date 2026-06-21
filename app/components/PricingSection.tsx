@@ -37,8 +37,8 @@ export default function PricingSection() {
         src="/tennis-ball.png"
         alt=""
         aria-hidden="true"
-        className="absolute bottom-0 -right-6 pointer-events-none select-none opacity-90"
-        style={{ width: "20%" }}
+        className="absolute -bottom-6 -right-6 pointer-events-none select-none opacity-90"
+        style={{ width: "52%", maxWidth: "380px", animation: "ballBob 7s ease-in-out infinite" }}
       />
 
       <div className="h-20 lg:h-28" />
@@ -56,13 +56,13 @@ export default function PricingSection() {
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="lg:hidden relative z-10 flex overflow-x-auto snap-x snap-mandatory pl-4 scroll-pl-4"
+        className="lg:hidden relative z-10 flex overflow-x-auto snap-x snap-mandatory pl-3 scroll-pl-3 py-2"
         style={{ scrollbarWidth: "none" }}
       >
         {t.pricing.plans.map((plan, i) => (
           <div
             key={plan.name}
-            className="flex-none w-[82vw] snap-start pb-2 mr-3"
+            className="flex-none snap-start px-1 mr-2"
           >
             <PricingCard
               planName={plan.name}
@@ -73,12 +73,11 @@ export default function PricingSection() {
               popularLabel={t.pricing.popular}
               isPopular={"isPopular" in plan ? plan.isPopular : false}
               buttonVariant={i === 1 ? "primary" : "secondary"}
-              className="w-full"
             />
           </div>
         ))}
-        {/* trailing spacer so the last card can snap into its offset position */}
-        <div className="flex-none w-[calc(18vw+4px)]" aria-hidden="true" />
+        {/* trailing spacer so the last card snaps to its correct offset */}
+        <div className="flex-none w-20" aria-hidden="true" />
       </div>
 
       {/* Mobile dots */}

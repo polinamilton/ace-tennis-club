@@ -28,15 +28,15 @@ export default function ContactSection() {
         src="/tennis-ball.png"
         alt=""
         aria-hidden="true"
-        className="absolute top-1/2 -right-20 pointer-events-none select-none opacity-85"
-        style={{ width: "45%", maxWidth: "340px", transform: "translateY(-50%) rotate(-15deg)", animation: "ballFloat 9s ease-in-out infinite" }}
+        className="absolute top-[28%] lg:top-[62%] -right-20 pointer-events-none select-none opacity-85"
+        style={{ width: "85%", maxWidth: "600px", transform: "translateY(-50%) rotate(-15deg)", animation: "ballFloat 9s ease-in-out infinite" }}
       />
       <img
         src="/tennis-ball.png"
         alt=""
         aria-hidden="true"
         className="absolute bottom-0 left-0 pointer-events-none select-none"
-        style={{ width: "36%", maxWidth: "280px", transform: "translate(-18%, 30%) rotate(140deg)", animation: "ballDrift 13s ease-in-out infinite" }}
+        style={{ width: "55%", maxWidth: "420px", transform: "translate(-18%, 30%) rotate(140deg)", animation: "ballDrift 13s ease-in-out infinite" }}
       />
 
       {/* Main content */}
@@ -91,7 +91,7 @@ export default function ContactSection() {
             <div className="flex justify-end mt-1">
               <button
                 type="submit"
-                className="border border-white/35 text-white font-segoe font-medium text-base lg:text-lg px-8 lg:px-10 py-3 lg:py-4 hover:bg-white/10 transition-all"
+                className="bg-[#d9f80f] text-black font-segoe font-semibold text-base lg:text-lg px-8 lg:px-10 py-3 lg:py-4 rounded-full hover:brightness-95 transition-all"
               >
                 {c.submit}
               </button>

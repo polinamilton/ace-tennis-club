@@ -15,6 +15,13 @@ export default function CourtsSection() {
   const prev = () => setCurrent((c) => (c - 1 + courts.length) % courts.length);
   const next = () => setCurrent((c) => (c + 1) % courts.length);
 
+  const detailRows = [
+    { label: labels.surface,   value: court.surface },
+    { label: labels.size,      value: court.size },
+    { label: labels.lighting,  value: court.lighting },
+    { label: labels.hours,     value: court.hours },
+  ];
+
   return (
     <section id="courts" className="relative bg-white overflow-hidden">
       <Navbar light sectionId="courts" showBook={false} />
@@ -22,7 +29,7 @@ export default function CourtsSection() {
 
       <div className="flex flex-col lg:flex-row lg:items-end px-4 lg:px-14 pb-8 lg:pb-14 gap-6 lg:gap-12">
 
-        {/* Left: title + court info */}
+        {/* ── Left: heading + desktop-only details ── */}
         <div data-reveal className="w-full lg:flex-shrink-0 lg:w-[460px] lg:pb-2">
           <h2
             className="courts-heading font-bold leading-[0.9] font-roboto bg-gradient-to-r from-black to-[#d9f80f] bg-clip-text text-transparent"
@@ -30,26 +37,21 @@ export default function CourtsSection() {
             {t.courts.heading1}<br />{t.courts.heading2}
           </h2>
 
-          {/* Court details */}
-          <div key={current} className="mt-4 lg:mt-8 flex flex-col gap-2 lg:gap-5" style={{ animation: "fadeUp 0.35s ease-out both" }}>
-            <p className="font-roboto font-semibold text-black text-sm lg:text-[22px]">{court.name}</p>
+          {/* Desktop only: court name + details under heading */}
+          <div key={current} className="hidden lg:flex mt-8 flex-col gap-5" style={{ animation: "fadeUp 0.35s ease-out both" }}>
+            <p className="font-roboto font-semibold text-black text-[22px]">{court.name}</p>
             <div className="flex flex-col">
-              {[
-                { label: labels.surface, value: court.surface },
-                { label: labels.size,    value: court.size },
-                { label: labels.lighting, value: court.lighting },
-                { label: labels.hours,   value: court.hours },
-              ].map(({ label, value }) => (
-                <div key={label} className="flex items-center justify-between py-2 lg:py-3 border-b border-black/10 last:border-0">
-                  <span className="font-segoe text-black/40 text-[11px] lg:text-sm">{label}</span>
-                  <span className="font-segoe text-black text-[11px] lg:text-sm font-medium">{value}</span>
+              {detailRows.map(({ label, value }) => (
+                <div key={label} className="flex items-center justify-between py-3 border-b border-black/10 last:border-0">
+                  <span className="font-segoe text-black/40 text-sm">{label}</span>
+                  <span className="font-segoe text-black text-sm font-medium">{value}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Right: large carousel */}
+        {/* ── Right: carousel image ── */}
         <div
           data-reveal data-delay="2"
           className="courts-carousel relative rounded-[32px] overflow-hidden bg-gray-200 w-full lg:flex-1"
@@ -62,7 +64,7 @@ export default function CourtsSection() {
             style={{ animation: "fadeUp 0.4s ease-out both" }}
           />
 
-          {/* Top gradient + court name */}
+          {/* Top gradient + court name overlay */}
           <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
           <div key={`name-${current}`} className="absolute top-5 left-6 z-10" style={{ animation: "fadeUp 0.35s ease-out both" }}>
             <span className="font-roboto font-bold text-white text-xl lg:text-[26px]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}>
@@ -70,7 +72,7 @@ export default function CourtsSection() {
             </span>
           </div>
 
-          {/* Bottom gradient + Book a Court button */}
+          {/* Bottom gradient + Book button */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/65 to-transparent pointer-events-none" />
           <div className="absolute bottom-14 left-0 right-0 flex justify-center z-10">
             <a
@@ -97,6 +99,16 @@ export default function CourtsSection() {
                 className={`rounded-full transition-all ${i === current ? "bg-white w-4 h-4" : "bg-white/50 w-3 h-3 mt-0.5"}`} />
             ))}
           </div>
+        </div>
+
+        {/* ── Mobile only: details below the carousel image (no repeated court name) ── */}
+        <div key={`mobile-details-${current}`} className="lg:hidden flex flex-col gap-2" style={{ animation: "fadeUp 0.35s ease-out both" }}>
+          {detailRows.map(({ label, value }) => (
+            <div key={label} className="flex items-center justify-between py-2 border-b border-black/10 last:border-0">
+              <span className="font-segoe text-black/40 text-[11px]">{label}</span>
+              <span className="font-segoe text-black text-[11px] font-medium">{value}</span>
+            </div>
+          ))}
         </div>
 
       </div>

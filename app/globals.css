@@ -90,6 +90,11 @@ input, textarea { caret-color: white; }
   50%       { transform: translateY(calc(-50% - 60px)) rotate(-1deg); }
 }
 
+@keyframes ballBob {
+  0%, 100% { transform: translateY(0) rotate(-10deg); }
+  50%       { transform: translateY(-22px) rotate(4deg); }
+}
+
 @keyframes ballDrift {
   0%, 100% { transform: translate(-18%, 30%) rotate(140deg); }
   33%      { transform: translate(-7%, 17%) rotate(155deg); }

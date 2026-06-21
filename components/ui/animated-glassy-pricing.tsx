@@ -162,7 +162,7 @@ export const PricingCard = ({
 }: PricingCardProps) => {
   const cardClasses = `
     relative backdrop-blur-[14px] bg-gradient-to-br rounded-2xl shadow-xl ${className || 'w-72'} px-7 py-8 flex flex-col h-full
-    transition-all duration-300 ease-out hover:scale-110 hover:shadow-2xl hover:z-10
+    transition-all duration-300 ease-out lg:hover:scale-110 lg:hover:shadow-2xl lg:hover:z-10
     from-black/5 to-black/0 border border-black/10
     dark:from-white/10 dark:to-white/5 dark:border-white/10 dark:backdrop-brightness-[0.91]
     ${isPopular ? 'ring-2 ring-[#d9f80f]/40 dark:from-white/20 dark:to-white/10 dark:border-[#d9f80f]/30' : ''}
@@ -178,8 +178,10 @@ export const PricingCard = ({
   return (
     <div className={cardClasses.trim()}>
       {isPopular && (
-        <div className="absolute -top-4 right-4 px-3 py-1 text-[12px] font-semibold rounded-full bg-[#d9f80f] text-black">
-          {popularLabel}
+        <div className="flex justify-end -mt-2 mb-2">
+          <span className="px-3 py-1 text-[12px] font-semibold rounded-full bg-[#d9f80f] text-black">
+            {popularLabel}
+          </span>
         </div>
       )}
       <div className="mb-3">
