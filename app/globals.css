@@ -28,18 +28,18 @@
 
 html {
   scroll-behavior: smooth;
-  min-width: 1440px;
 }
 
 body {
   background: #0d0d0d;
   margin: 0;
   -webkit-font-smoothing: antialiased;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
-* {
-  cursor: none;
+/* Custom cursor only on devices with a fine pointer (mouse) */
+@media (pointer: fine) {
+  * { cursor: none; }
 }
 
 @keyframes letterUp {
@@ -102,3 +102,24 @@ input, textarea { caret-color: white; }
 #courts  { position: relative; z-index: 3; }
 #price   { position: relative; z-index: 4; }
 #contact { position: relative; z-index: 5; }
+
+/* ── Hero dot ── */
+.hero-dot { width: 12px; height: 12px; top: 10px; right: -16px; }
+
+/* ── Responsive heading sizes (mobile → desktop) ── */
+.hero-title       { font-size: 72px; }
+.courts-heading   { font-size: 52px; }
+.contact-heading  { font-size: 48px; }
+.about-years      { font-size: 72px; }
+.about-stat       { font-size: 28px; }
+.about-card-num   { font-size: 32px; }
+
+@media (min-width: 1024px) {
+  .hero-dot { width: 22px; height: 22px; top: 28px; right: -32px; }
+  .hero-title       { font-size: 196px; }
+  .courts-heading   { font-size: 112px; }
+  .contact-heading  { font-size: 86px; }
+  .about-years      { font-size: 148px; }
+  .about-stat       { font-size: 44px; }
+  .about-card-num   { font-size: 48px; }
+}

@@ -22,18 +22,17 @@ export default function AboutSection() {
   return (
     <section id="about" className="relative bg-white overflow-hidden">
       <Navbar light sectionId="about" />
-      <div className="h-28" />
+      <div className="h-20 lg:h-28" />
 
-      <div className="grid grid-cols-3 gap-5 px-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-5 px-4 lg:px-10">
 
-        {/* Cards 1 & 2 — full height */}
+        {/* Cards 1 & 2 */}
         {cards.slice(0, 2).map((card, i) => (
           <div
             key={card.number}
             data-reveal
             data-delay={String(i + 1)}
-            className="relative rounded-[24px] overflow-hidden cursor-pointer group"
-            style={{ height: "440px" }}
+            className="relative rounded-[24px] overflow-hidden cursor-pointer group h-[280px] lg:h-[440px]"
             onClick={() => setOpen(i)}
           >
             <img
@@ -41,11 +40,10 @@ export default function AboutSection() {
               alt={card.alt}
               className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${card.extraClass}`}
             />
-            {/* Dark gradient at bottom */}
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className="absolute top-5 left-5">
-              <span className="block font-bold text-[#d9f80f] font-roboto leading-none" style={{ fontSize: "48px" }}>{card.number}</span>
+            <div className="absolute top-4 left-4 lg:top-5 lg:left-5">
+              <span className="about-card-num block font-bold text-[#d9f80f] font-roboto leading-none">{card.number}</span>
             </div>
 
             <div className="absolute bottom-4 left-4 right-4">
@@ -59,10 +57,9 @@ export default function AboutSection() {
         ))}
 
         {/* Card 3 — short image + 15 years block */}
-        <div data-reveal data-delay="3" className="flex flex-col gap-5" style={{ height: "440px" }}>
+        <div data-reveal data-delay="3" className="flex flex-col gap-4 lg:gap-5 lg:h-[440px]">
           <div
-            className="relative rounded-[24px] overflow-hidden flex-shrink-0 cursor-pointer group"
-            style={{ height: "200px" }}
+            className="relative rounded-[24px] overflow-hidden flex-shrink-0 cursor-pointer group h-[200px]"
             onClick={() => setOpen(2)}
           >
             <img
@@ -73,7 +70,7 @@ export default function AboutSection() {
             <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
 
             <div className="absolute top-4 left-4">
-              <span className="block font-bold text-[#d9f80f] font-roboto leading-none" style={{ fontSize: "48px" }}>03</span>
+              <span className="about-card-num block font-bold text-[#d9f80f] font-roboto leading-none">03</span>
             </div>
 
             <div className="absolute bottom-3 left-3 right-3">
@@ -85,21 +82,21 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="flex-1 flex items-center gap-3 pl-1">
-            <span className="font-bold text-[#d9f80f] font-roboto leading-none flex-shrink-0" style={{ fontSize: "148px" }}>15</span>
-            <span className="font-segoe text-black text-[22px] leading-snug" style={{ whiteSpace: "pre-line" }}>{t.about.yearsLabel}</span>
+          <div className="flex items-center gap-3 pl-1 py-4 lg:py-0 lg:flex-1">
+            <span className="about-years font-bold text-[#d9f80f] font-roboto leading-none flex-shrink-0">15</span>
+            <span className="font-segoe text-black text-base lg:text-[22px] leading-snug" style={{ whiteSpace: "pre-line" }}>{t.about.yearsLabel}</span>
           </div>
         </div>
 
       </div>
 
-      <div className="h-6" />
+      <div className="h-4 lg:h-6" />
 
-      <div data-reveal="fade" className="bg-[#d9f80f] px-10 py-5 flex justify-around items-center">
+      <div data-reveal="fade" className="bg-[#d9f80f] px-4 lg:px-10 py-4 lg:py-5 flex justify-around items-center flex-wrap gap-4">
         {t.about.stats.map((stat, i) => (
           <div key={stat.label} data-reveal data-delay={String(i + 1)} className="text-center">
-            <div className="font-semibold text-white leading-none mb-1 font-roboto" style={{ fontSize: "44px" }}>{stat.value}</div>
-            <div className="text-black font-semibold text-lg font-segoe">{stat.label}</div>
+            <div className="about-stat font-semibold text-white leading-none mb-1 font-roboto">{stat.value}</div>
+            <div className="text-black font-semibold text-sm lg:text-lg font-segoe">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -107,7 +104,7 @@ export default function AboutSection() {
       {/* Modal */}
       {open !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-8"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 lg:p-8"
           style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)" }}
           onClick={() => setOpen(null)}
         >
@@ -119,12 +116,12 @@ export default function AboutSection() {
             <img
               src={cards[open].src}
               alt={cards[open].alt}
-              className="w-full h-52 object-cover"
+              className="w-full h-48 lg:h-52 object-cover"
             />
             <div className="absolute top-4 left-4">
               <span className="font-bold text-[#d9f80f] font-roboto leading-none" style={{ fontSize: "40px" }}>{cards[open].number}</span>
             </div>
-            <div className="px-8 py-7">
+            <div className="px-6 py-6 lg:px-8 lg:py-7">
               <div className="inline-flex items-center bg-white/10 rounded-full px-3 py-1 mb-4">
                 <span className="font-segoe text-white/80 text-xs tracking-wide">{cards[open].label}</span>
               </div>

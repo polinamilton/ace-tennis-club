@@ -22,23 +22,23 @@ export default function PricingSection() {
         alt=""
         aria-hidden="true"
         className="absolute bottom-0 -right-6 pointer-events-none select-none opacity-90"
-        style={{ width: "20%", transform: "rotate(20deg)" }}
+        style={{ width: "20%" }}
       />
 
-      <div className="h-28" />
+      <div className="h-20 lg:h-28" />
 
-      <div data-reveal="fade" className="relative z-10 text-center px-10 mb-16">
+      <div data-reveal="fade" className="relative z-10 text-center px-6 lg:px-10 mb-10 lg:mb-16">
         <h2
-          className="font-normal text-white capitalize font-roboto"
-          style={{ fontSize: "64px", lineHeight: 1.2 }}
+          className="font-normal text-white capitalize font-roboto text-4xl lg:text-[64px]"
+          style={{ lineHeight: 1.2 }}
         >
           {t.pricing.heading}
         </h2>
       </div>
 
-      <div className="relative z-10 flex flex-row gap-6 px-14 pb-16 items-stretch justify-center">
+      <div className="relative z-10 flex flex-col lg:flex-row gap-5 lg:gap-6 px-4 lg:px-14 pb-12 lg:pb-16 items-center lg:items-stretch justify-center">
         {t.pricing.plans.map((plan, i) => (
-          <div key={plan.name} data-reveal="scale" data-delay={String(i + 1)} className="flex flex-col">
+          <div key={plan.name} data-reveal="scale" data-delay={String(i + 1)} className="flex flex-col w-full max-w-sm lg:max-w-none lg:w-auto">
             <PricingCard
               planName={plan.name}
               description={plan.description}

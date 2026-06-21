@@ -18,45 +18,44 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative rounded-b-[40px] overflow-hidden"
+      className="relative rounded-b-[40px] overflow-hidden flex flex-col"
       style={{ background: "#161616", minHeight: "100vh" }}
     >
       <Navbar sectionId="contact" />
 
+      {/* Decorative balls */}
       <img
         src="/tennis-ball.png"
         alt=""
         aria-hidden="true"
         className="absolute top-1/2 -right-20 pointer-events-none select-none opacity-85"
-        style={{ width: "38%", transform: "translateY(-50%) rotate(-15deg)", animation: "ballFloat 9s ease-in-out infinite" }}
+        style={{ width: "45%", maxWidth: "340px", transform: "translateY(-50%) rotate(-15deg)", animation: "ballFloat 9s ease-in-out infinite" }}
       />
-
-      {/* Small accent ball — bottom-left corner */}
       <img
         src="/tennis-ball.png"
         alt=""
         aria-hidden="true"
-        className="absolute bottom-0 left-0 w-[32%] pointer-events-none select-none"
-        style={{ transform: "translate(-18%, 30%) rotate(140deg)", animation: "ballDrift 13s ease-in-out infinite" }}
+        className="absolute bottom-0 left-0 pointer-events-none select-none"
+        style={{ width: "36%", maxWidth: "280px", transform: "translate(-18%, 30%) rotate(140deg)", animation: "ballDrift 13s ease-in-out infinite" }}
       />
 
-      {/* Two-column: heading left, form center-right */}
-      <div className="absolute inset-0 z-10 flex items-start px-24 gap-16" style={{ paddingTop: "160px", paddingBottom: "120px" }}>
+      {/* Main content */}
+      <div className="relative z-10 flex flex-col lg:flex-row items-start px-6 lg:px-24 gap-8 lg:gap-16 pt-28 lg:pt-40 pb-12 lg:pb-32 flex-1">
 
         {/* Left: JOIN THE GAME */}
-        <div data-reveal className="flex-shrink-0" style={{ width: "320px" }}>
-          <h2 className="font-bold font-roboto leading-[0.88]" style={{ fontSize: "86px" }}>
+        <div data-reveal className="w-full lg:flex-shrink-0 lg:w-[320px]">
+          <h2 className="contact-heading font-bold font-roboto leading-[0.88]">
             <span className="text-white">{c.line1}</span><br />
             <span className="text-white/25">{c.line2}</span><br />
             <span className="text-white/25">{c.line3}</span>
           </h2>
         </div>
 
-        {/* Center: form */}
-        <div data-reveal data-delay="2" className="flex-1 max-w-lg">
+        {/* Form */}
+        <div data-reveal data-delay="2" className="w-full lg:flex-1 lg:max-w-lg">
           <form
             onSubmit={handleSubmit}
-            className="backdrop-blur-md rounded-[32px] px-10 py-8 flex flex-col gap-7"
+            className="backdrop-blur-md rounded-[32px] px-6 lg:px-10 py-8 flex flex-col gap-7"
             style={{
               background: "rgba(255,255,255,0.07)",
               border: "1.5px solid rgba(255,255,255,0.18)",
@@ -68,7 +67,7 @@ export default function ContactSection() {
                 placeholder={c.namePlaceholder}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full bg-transparent text-white font-segoe text-xl placeholder:text-white/40 focus:outline-none"
+                className="w-full bg-transparent text-white font-segoe text-lg lg:text-xl placeholder:text-white/40 focus:outline-none"
               />
             </div>
             <div className="border-b border-white/25 pb-3 transition-colors focus-within:border-white/60">
@@ -77,7 +76,7 @@ export default function ContactSection() {
                 placeholder={c.phonePlaceholder}
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                className="w-full bg-transparent text-white font-segoe text-xl placeholder:text-white/40 focus:outline-none"
+                className="w-full bg-transparent text-white font-segoe text-lg lg:text-xl placeholder:text-white/40 focus:outline-none"
               />
             </div>
             <div className="border-b border-white/25 pb-3 transition-colors focus-within:border-white/60">
@@ -86,13 +85,13 @@ export default function ContactSection() {
                 placeholder={c.emailPlaceholder}
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full bg-transparent text-white font-segoe text-xl placeholder:text-white/40 focus:outline-none"
+                className="w-full bg-transparent text-white font-segoe text-lg lg:text-xl placeholder:text-white/40 focus:outline-none"
               />
             </div>
             <div className="flex justify-end mt-1">
               <button
                 type="submit"
-                className="border border-white/35 text-white font-segoe font-medium text-lg px-10 py-4 hover:bg-white/10 transition-all"
+                className="border border-white/35 text-white font-segoe font-medium text-base lg:text-lg px-8 lg:px-10 py-3 lg:py-4 hover:bg-white/10 transition-all"
               >
                 {c.submit}
               </button>
@@ -101,8 +100,8 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* Footer links — centered */}
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-24 z-10">
+      {/* Footer links */}
+      <div className="relative z-10 flex justify-center gap-12 lg:gap-24 pb-10 px-6">
         <div>
           <p className="font-segoe text-[#e6ef5f] uppercase tracking-widest text-sm font-semibold mb-3">{c.navLabel}</p>
           <ul className="flex flex-col gap-1.5">
