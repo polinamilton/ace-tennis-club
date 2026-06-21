@@ -52,17 +52,17 @@ export default function PricingSection() {
         </h2>
       </div>
 
-      {/* ── Mobile: horizontal snap carousel ── */}
+      {/* ── Mobile: horizontal snap carousel with peek ── */}
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="lg:hidden relative z-10 flex overflow-x-auto snap-x snap-mandatory"
+        className="lg:hidden relative z-10 flex overflow-x-auto snap-x snap-mandatory pl-4 scroll-pl-4"
         style={{ scrollbarWidth: "none" }}
       >
         {t.pricing.plans.map((plan, i) => (
           <div
             key={plan.name}
-            className="flex-none w-[100vw] snap-start px-4 pb-2"
+            className="flex-none w-[82vw] snap-start pb-2 mr-3"
           >
             <PricingCard
               planName={plan.name}
@@ -77,6 +77,8 @@ export default function PricingSection() {
             />
           </div>
         ))}
+        {/* trailing spacer so the last card can snap into its offset position */}
+        <div className="flex-none w-[calc(18vw+4px)]" aria-hidden="true" />
       </div>
 
       {/* Mobile dots */}

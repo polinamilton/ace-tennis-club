@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import { useLang } from "../i18n/LanguageContext";
 
 const HERO_IMAGE = "/hero-court.jpg";
-const HERO_IMAGE_MOBILE = "/hero-court-mobile.jpg";
 
 export default function HeroSection() {
   const { t } = useLang();
@@ -15,15 +14,11 @@ export default function HeroSection() {
       className="relative rounded-t-[40px] overflow-hidden min-h-screen flex items-center justify-center"
     >
       <Navbar showLang sectionId="hero" />
-      {/* Background image — mobile uses portrait aerial shot */}
-      <picture>
-        <source media="(max-width: 1023px)" srcSet={HERO_IMAGE_MOBILE} />
-        <img
-          src={HERO_IMAGE}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        />
-      </picture>
+      <img
+        src={HERO_IMAGE}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/25" />
 
