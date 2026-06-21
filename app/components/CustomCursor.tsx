@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ECHOES = [
   { lag: 90,  size: 8, opacity: 0.45 },
@@ -10,12 +10,18 @@ const ECHOES = [
 ];
 
 export default function CustomCursor() {
+  const [hasMouse, setHasMouse] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const echoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    setHasMouse(window.matchMedia("(pointer: fine)").matches);
+  }, []);
+
+  useEffect(() => {
+    if (!hasMouse) return;
     const cursor = cursorRef.current;
     const dot = dotRef.current;
     const ring = ringRef.current;
@@ -77,6 +83,8 @@ export default function CustomCursor() {
       document.documentElement.removeEventListener("mouseenter", onEnter);
     };
   }, []);
+
+  if (!hasMouse) return null;
 
   return (
     <>
