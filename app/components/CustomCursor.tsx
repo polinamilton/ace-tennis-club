@@ -17,7 +17,10 @@ export default function CustomCursor() {
   const echoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    setHasMouse(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
+    setHasMouse(
+      navigator.maxTouchPoints === 0 &&
+      window.matchMedia("(pointer: fine)").matches
+    );
   }, []);
 
   useEffect(() => {
