@@ -37,8 +37,8 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom cursor only on real mouse devices (excludes touch/iPad) */
-@media (hover: hover) and (pointer: fine) {
+/* Custom cursor only on desktop (≥1024px) with a mouse */
+@media (min-width: 1024px) and (pointer: fine) {
   * { cursor: none; }
 }
 

@@ -17,23 +17,11 @@ export default function CustomCursor() {
   const echoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-
-    let touchFired = false;
-    const onTouch = () => { touchFired = true; };
-    const onMouse = () => {
-      if (!touchFired) setHasMouse(true);
-      window.removeEventListener("touchstart", onTouch);
-      window.removeEventListener("mousemove", onMouse);
-    };
-
-    window.addEventListener("touchstart", onTouch, { passive: true });
-    window.addEventListener("mousemove", onMouse, { once: true, passive: true });
-
-    return () => {
-      window.removeEventListener("touchstart", onTouch);
-      window.removeEventListener("mousemove", onMouse);
-    };
+    const mq = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
+    setHasMouse(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setHasMouse(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
   }, []);
 
   useEffect(() => {
