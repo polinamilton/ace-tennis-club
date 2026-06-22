@@ -37,14 +37,14 @@ export default function CourtsSection() {
             {t.courts.heading1}<br />{t.courts.heading2}
           </h2>
 
-          {/* Desktop only: court name + details under heading */}
-          <div key={current} className="hidden lg:flex mt-8 flex-col gap-5" style={{ animation: "fadeUp 0.35s ease-out both" }}>
-            <p className="font-roboto font-semibold text-black text-[22px]">{court.name}</p>
+          {/* Court details */}
+          <div key={current} className="mt-4 lg:mt-8 flex flex-col gap-2 lg:gap-5" style={{ animation: "fadeUp 0.35s ease-out both" }}>
+            <p className="font-roboto font-semibold text-black text-sm lg:text-[22px]">{court.name}</p>
             <div className="flex flex-col">
               {detailRows.map(({ label, value }) => (
-                <div key={label} className="flex items-center justify-between py-3 border-b border-black/10 last:border-0">
-                  <span className="font-segoe text-black/40 text-sm">{label}</span>
-                  <span className="font-segoe text-black text-sm font-medium">{value}</span>
+                <div key={label} className="flex items-center justify-between py-2 lg:py-3 border-b border-black/10 last:border-0">
+                  <span className="font-segoe text-black/40 text-[11px] lg:text-sm">{label}</span>
+                  <span className="font-segoe text-black text-[11px] lg:text-sm font-medium">{value}</span>
                 </div>
               ))}
             </div>
@@ -101,17 +101,8 @@ export default function CourtsSection() {
           </div>
         </div>
 
-        {/* ── Mobile only: details below the carousel image (no repeated court name) ── */}
-        <div key={`mobile-details-${current}`} className="lg:hidden flex flex-col gap-2" style={{ animation: "fadeUp 0.35s ease-out both" }}>
-          {detailRows.map(({ label, value }) => (
-            <div key={label} className="flex items-center justify-between py-2 border-b border-black/10 last:border-0">
-              <span className="font-segoe text-black/40 text-[11px]">{label}</span>
-              <span className="font-segoe text-black text-[11px] font-medium">{value}</span>
-            </div>
-          ))}
-        </div>
 
-      </div>
+</div>
     </section>
   );
 }

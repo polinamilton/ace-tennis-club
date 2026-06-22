@@ -91,7 +91,7 @@ export default function ContactSection() {
             <div className="flex justify-end mt-1">
               <button
                 type="submit"
-                className="bg-[#d9f80f] text-black font-segoe font-semibold text-base lg:text-lg px-8 lg:px-10 py-3 lg:py-4 rounded-full hover:brightness-95 transition-all"
+                className="border border-white/35 text-white font-segoe font-medium text-base lg:text-lg px-8 lg:px-10 py-3 lg:py-4 hover:bg-white/10 transition-all"
               >
                 {c.submit}
               </button>
