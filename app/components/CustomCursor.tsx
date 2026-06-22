@@ -17,10 +17,23 @@ export default function CustomCursor() {
   const echoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    setHasMouse(
-      navigator.maxTouchPoints === 0 &&
-      window.matchMedia("(pointer: fine)").matches
-    );
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+
+    let touchFired = false;
+    const onTouch = () => { touchFired = true; };
+    const onMouse = () => {
+      if (!touchFired) setHasMouse(true);
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("mousemove", onMouse);
+    };
+
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    window.addEventListener("mousemove", onMouse, { once: true, passive: true });
+
+    return () => {
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("mousemove", onMouse);
+    };
   }, []);
 
   useEffect(() => {
